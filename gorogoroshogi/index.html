@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goro Goro</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-gradient"></div>
+    <div class="bg-shapes" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="app">
+      <header class="hero">
+        <div class="hero-badge">Mini Shogi • Self-Play Ready</div>
+        <h1>Goro Goro</h1>
+        <p class="hero-sub">
+          A compact 5x6 shogi variant with cute animal pieces, designed from day one for AI training.
+        </p>
+      </header>
+
+      <main class="board-area">
+        <section class="board-panel">
+          <div class="status" id="status">Loading...</div>
+          <div class="board" id="board" aria-label="Goro Goro board"></div>
+          <div class="coords">
+            <div class="files">A B C D E</div>
+            <div class="ranks">6 5 4 3 2 1</div>
+          </div>
+        </section>
+
+        <section class="side-panel">
+          <div class="panel-card">
+            <h2>Hands</h2>
+            <div class="hand" id="hand-n"></div>
+            <div class="hand" id="hand-s"></div>
+          </div>
+
+          <div class="panel-card">
+            <h2>Controls</h2>
+            <div class="controls">
+              <button id="reset">Reset Match</button>
+              <button id="export">Export State</button>
+              <button id="toggle-legal">Toggle Legal Moves</button>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <h2>How It Works</h2>
+            <ul>
+              <li>Select a piece, then click a target square.</li>
+              <li>Captured animals go to your hand and can be dropped later.</li>
+              <li>Chicks and cats can promote in the enemy camp (last two ranks).</li>
+              <li>The engine is deterministic and exposes JSON-friendly state.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="promotion-modal" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <h3>Promotion?</h3>
+        <p>Promote this piece?</p>
+        <div class="modal-actions">
+          <button id="promote-yes">Promote</button>
+          <button id="promote-no">Keep Original</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="export-modal" role="dialog" aria-modal="true">
+      <div class="modal-card wide">
+        <h3>Exported State</h3>
+        <textarea id="export-text" rows="10" readonly></textarea>
+        <div class="modal-actions">
+          <button id="export-copy">Copy JSON</button>
+          <button id="export-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

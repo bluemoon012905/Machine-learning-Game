@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maze Maker/Solver</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Maze Maker/Solver</h1>
+      <p>10x10 grid, single start and goal. Everything you see is AI-readable.</p>
+    </header>
+    <main>
+      <section class="panel">
+        <div class="controls">
+          <label for="seed-input">Seed</label>
+          <input id="seed-input" type="text" placeholder="12345 or any text" />
+          <button id="apply-seed">New game with seed</button>
+          <button class="secondary" id="random-seed">Random seed</button>
+        </div>
+        <div class="grid-wrapper">
+          <div class="legend">
+            <span class="badge"><span class="dot" style="background:#2563eb"></span>Start</span>
+            <span class="badge"><span class="dot" style="background:#22c55e"></span>Goal</span>
+            <span class="badge"><span class="dot" style="background:#fbbf24"></span>Agent</span>
+            <span class="badge"><span class="dot" style="background:#111827"></span>Wall</span>
+            <span class="badge"><span class="dot" style="background:#1f2937"></span>Open</span>
+          </div>
+          <div id="grid" aria-label="maze grid"></div>
+          <div class="movement">
+            <span></span>
+            <button data-move="up">↑</button>
+            <span></span>
+            <button data-move="left">←</button>
+            <button data-move="down">↓</button>
+            <button data-move="right">→</button>
+            <span class="status" id="status"></span>
+          </div>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="stats">
+          <div class="stat">
+            <div class="label">Seed</div>
+            <div class="value" id="seed-value">–</div>
+          </div>
+          <div class="stat">
+            <div class="label">Distance traveled</div>
+            <div class="value" id="distance-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">Moves issued</div>
+            <div class="value" id="moves-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="label">Goal</div>
+            <div class="value" id="goal-value">9,9</div>
+          </div>
+        </div>
+        <h3>Game state (AI-readable)</h3>
+        <pre id="state-json" class="state-json">{}</pre>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
